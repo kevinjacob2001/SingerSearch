@@ -5,7 +5,7 @@ class Details extends Component{
 constructor(){
   super()
   this.state={
-    datas:[],change:"",final:'eminem'
+    datas:[],change:"",final:'gaga'
   }
 }
 
@@ -27,19 +27,19 @@ Change=(e)=>{
 this.setState({change:e.target.value})
 console.log(this.state.change);
 };
-Final=()=>{
- 
+Final= (e)=>{
+ e.PreventDefault();
     this.setState({final:this.state.change})
 }
   render(){
     return(
 <div>
-    <form>
+    <form onSubmit={this.Final}>
     <input type="search" onChange={this.Change}/>
-    <button type="submit" onClick={this.Final}>CLICK HERE</button>
+    <button type="submit" >CLICK HERE</button>
     </form>
 
-    {this.state.datas.map((data)=><Titles titles={data.title}/>)}
+    {this.state.datas.map((data)=><Titles key={data.id} titles={data.title}/>)}
     </div>
 
     );
